@@ -66,7 +66,7 @@ const defaultOpts = {
           <li *ngFor="let suggestion of suggestions" (tap)="select(suggestion);$event.srcEvent.stopPropagation()">
               <ng-template
                       [ngTemplateOutlet]="template || defaultTemplate"
-                      [ngOutletContext]="
+                      [ngTemplateOutletContext]="
                         {attrs:{ 
                           data: suggestion, 
                           label: getLabel(suggestion),
@@ -290,6 +290,9 @@ export class AutoCompleteComponent implements ControlValueAccessor {
     this.keyword = '';
     this.selection = null;
     this.formValue = null;
+
+    // emit selection event
+    this.updateModel();
 
     if (hideItemList) {
       this.hideItemList();
