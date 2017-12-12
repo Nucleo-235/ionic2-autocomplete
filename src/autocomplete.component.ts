@@ -295,6 +295,9 @@ export class AutoCompleteComponent implements ControlValueAccessor {
       this.hideItemList();
     }
 
+    // emit selection event
+    this.updateModel();
+
     return;
   }
 
